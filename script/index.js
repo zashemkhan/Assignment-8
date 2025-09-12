@@ -85,3 +85,4 @@ const clearButton = getElementId("clear-button");
 clearButton.addEventListener("click", function () {
   historyContainer.innerHTML = "";
 });
+
