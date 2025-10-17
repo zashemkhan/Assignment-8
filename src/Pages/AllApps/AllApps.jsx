@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import useApps from "../../Hooks/useApps";
 import AllApplications from "./AllApplications";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 
 const AllApps = () => {
-  const [apps] = useApps();
+  const [apps, error,loading] = useApps();
+
   const [search, setSearch] = useState("");
   const term = search.trim().toLocaleLowerCase();
 
@@ -52,11 +54,15 @@ const AllApps = () => {
             />
           </label>
         </div>
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-8  ">
-          {searchedApps.map((app) => (
-            <AllApplications key={app.id} app={app}></AllApplications>
-          ))}
-        </div>
+        {loading ? (
+          <LoadingSpinner></LoadingSpinner>
+        ) : (
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8  ">
+            {searchedApps.map((app) => (
+              <AllApplications key={app.id} app={app}></AllApplications>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

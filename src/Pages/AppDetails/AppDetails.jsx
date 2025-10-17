@@ -6,28 +6,17 @@ import download from "../../assets/fi_18110198.png";
 import star from "../../assets/fi_1828884.png";
 import { toast, ToastContainer } from "react-toastify";
 import RechartData from "../RechartData/RechartData";
-
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import AppError from "../Error/AppError";
 
 const AppDetails = () => {
   const { id } = useParams();
-  const [apps, loading] = useApps();
+  const [apps, error, loading] = useApps();
   const [allReadyInstalled, setAllReadyInstalled] = useState(false);
-
   const detailsApp = apps?.find((app) => String(app.id) === id) || {};
-  if (loading) return <p>loadiing................</p>;
-
-  const {
-    title,
-    image,
-    ratingAvg,
-    downloads,
-    reviews,
-    companyName,
-    size,
-    description,
-  } = detailsApp;
 
   useEffect(() => {
+    if (!detailsApp.id) return;
     const existingList = JSON.parse(localStorage.getItem("installed")) || [];
     const isInstalled = existingList.some((app) => app.id === detailsApp.id);
     setAllReadyInstalled(isInstalled);
@@ -43,6 +32,20 @@ const AppDetails = () => {
       toast.success(`Yahoo ⚡!! ${title} Installed Successfully`);
     }
   };
+  const {
+    title,
+    image,
+    ratingAvg,
+    downloads,
+    reviews,
+    companyName,
+    size,
+    description,
+  } = detailsApp;
+
+  if (loading) return <LoadingSpinner />;
+  if (error) return <div>somethm went wronnn</div>;
+  if (!detailsApp.id) return <AppError/>;
   return (
     <div className="lg:py-20 py-10 w-11/12 mx-auto ">
       <ToastContainer
@@ -91,7 +94,7 @@ const AppDetails = () => {
               <p className="lg:text-4xl text-3xl font-extrabold">{ratingAvg}</p>
             </div>
             <div className="">
-              <img className="lg:w-8 lg:h-8 w-7 h-7"src={like} alt="" />
+              <img className="lg:w-8 lg:h-8 w-7 h-7" src={like} alt="" />
               <p className="my-2">Total Reviews</p>
               <p className="lg:text-4xl text-3xl font-extrabold">{reviews}</p>
             </div>
@@ -107,7 +110,7 @@ const AppDetails = () => {
       </div>
       <div className="mt-14">
         <h2 className="font-semibold text-2xl mb-3">Ratings</h2>
-         <RechartData detailsApp={detailsApp}/>
+        <RechartData detailsApp={detailsApp} />
       </div>
       <div className=" mt-10 ">
         <h2 className="text-[#001931] text-2xl font-semibold mb-2">
@@ -115,7 +118,6 @@ const AppDetails = () => {
         </h2>
         <span className="text-[#627382] lg:text-xl">{description}</span>
       </div>
-     
     </div>
   );
 };

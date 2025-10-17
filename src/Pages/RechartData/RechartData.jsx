@@ -13,9 +13,9 @@ import {
 } from "recharts";
 
 const RechartData = ({ detailsApp }) => {
-  if (!detailsApp?.ratings) return null;
+  if (!detailsApp?.ratings || detailsApp.ratings.length === 0) return null;
   const data = [...detailsApp.ratings]
-    .sort((a, b) => b.name - a.name)
+    .sort((a, b) => b.count - a.count)
     .map((r) => ({
       name: r.name,
       count: r.count,
@@ -27,7 +27,7 @@ const RechartData = ({ detailsApp }) => {
         <ComposedChart data={data} layout="vertical">
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis type="number" />
-          <YAxis dataKey="name" type="category" width={50} />
+          <YAxis dataKey="name" type="category" width={40} />
           <Tooltip />
           <Bar dataKey="count" barSize={40} fill="#FF8811" />
         </ComposedChart>
