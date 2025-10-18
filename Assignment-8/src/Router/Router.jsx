@@ -1,10 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../Pages/Home/Home";
 import MainLayOut from "../Layouts/MainLayOut/MainLayOut";
 import Installation from "../Pages/Installation/Installation";
 import AllApps from "../Pages/AllApps/AllApps";
 import AppDetails from "../Pages/AppDetails/AppDetails";
 import ErrorPaged from "../Pages/ErrorPage/ErrorPage";
+import Home from "../Pages/MainHome/Home";
+
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
       {
         
         index: true,
-        Component: Home,
+        Component:Home,
       },
       {
        

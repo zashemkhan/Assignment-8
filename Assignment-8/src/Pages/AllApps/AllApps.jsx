@@ -7,7 +7,7 @@ import { Link } from "react-router";
 import { useEffect } from "react";
 
 const AllApps = () => {
-  const [apps,loading, error] = useApps();
+  const [apps,loading] = useApps();
 
   const [search, setSearch] = useState("");
   const [searchLoading,setSearchLoading]=useState(false)
@@ -30,7 +30,7 @@ const AllApps = () => {
   },[search,apps,loading])
 
   
-  if (loading) return <LoadingSpinner />;
+  if (loading) return <LoadingSpinner/>;
 
 
   return (

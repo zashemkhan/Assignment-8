@@ -12,9 +12,9 @@ import ErrorPaged from "../ErrorPage/ErrorPage";
 
 const AppDetails = () => {
   const { id } = useParams();
-  const [apps, error, loading] = useApps();
+  const [apps, loading] = useApps();
   const [allReadyInstalled, setAllReadyInstalled] = useState(false);
-  const detailsApp = apps?.find((app) => String(app.id) === id) || {}
+  const detailsApp = apps?.find((app) => String(app.id) === id) || {};
 
   useEffect(() => {
     if (!detailsApp.id) return;
@@ -46,12 +46,14 @@ const AppDetails = () => {
 
   if (loading) return <LoadingSpinner />;
 
-  if (!detailsApp.id) return <AppError/>;
-  return (
+  return !detailsApp.id ? (
+    <AppError />
+  ) : (
     <div className="lg:py-20 py-10 w-11/12 mx-auto ">
       <ToastContainer
         position="top-center"
-        autoClose={5000}Ñ
+        autoClose={5000}
+        Ñ
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}

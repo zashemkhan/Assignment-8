@@ -1,23 +1,19 @@
 import { Link } from "react-router-dom";
-import TrendingApps from "./TrendingApps/TrendingApps";
+
 import useApps from "../../Hooks/useApps";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
-import ErrorPaged from "../ErrorPage/ErrorPage";
-import AppError from "../Error/AppError";
-import HeroSection from "../../COmponents/HeroSection/HeroSection";
+import HeroSection from "../../COmponents/Hero/HeroSection";
+import TrendingApps from "../TrenddingApps/TrendingApps";
 
 const Home = () => {
-  const [apps,loading, error] = useApps();
+  const [apps, loading] = useApps();
   const trendingApps = apps.slice(0, 8);
-
-// if (!apps||apps.length===0) return <AppError/>;
 
   return loading ? (
     <LoadingSpinner></LoadingSpinner>
   ) : (
-   
     <div className="py-10 lg:py-20">
-       <HeroSection></HeroSection>
+      <HeroSection></HeroSection>
       <div className="pb-10 space-y-3">
         <h2 className="text-center text-3xl lg:text-4xl text-[#001931] font-bold">
           Trending Apps
