@@ -8,7 +8,7 @@ import TrendingApps from "../TrenddingApps/TrendingApps";
 const Home = () => {
   const [apps, loading] = useApps();
   const trendingApps = apps.slice(0, 8);
-
+  console.log(apps);
   return loading ? (
     <LoadingSpinner></LoadingSpinner>
   ) : (
