@@ -19,7 +19,7 @@ const HeroSection = () => {
           simpler, smarter, and more exciting.Our goal is to turn your ideas
           into digital experiences that truly make an impact.
         </p>
-        <div className="flex items-center gap-4 justify-center lg:mt-6">
+        <div className="flex items-center gap-4 justify-center lg:mt-6 ">
           <a href="https://play.google.com/store/games?hl=en" className="">
             <button className="flex items-center gap-3 py-4 lg:px-8 px-5 border-1 border-[#d2d2d2] rounded-md">
               <img src={playStore} className="w-6 h-6" alt="" />
@@ -36,7 +36,10 @@ const HeroSection = () => {
             </button>
           </a>
         </div>
-        <div className=" overflow-hidden flex justify-center mt-10">
+        <div
+          className=" overflow-hidden flex justify-center mt-10 w-11/12 mx-auto
+        "
+        >
           <img className="h-full  object-cover" src={heroImage} alt="" />
         </div>
       </div>
@@ -47,17 +50,17 @@ const HeroSection = () => {
         <div className="lg:flex-row flex flex-col  justify-center items-center lg:py-10 pt-10 lg:gap-50 text-center lg:mt-6">
           <div className="space-y-7 space">
             <p className="text-sm ">Total Downloads</p>
-            <h4 className="text-6xl font-extrabold">29.6M</h4>
+            <h4 className="lg:text-6xl text-5xl font-extrabold">29.6M</h4>
             <p className="text-sm">21% more than last month</p>
           </div>
           <div className="space-y-7 space">
             <p className="text-sm ">Total Reviews</p>
-            <h4 className="text-6xl font-extrabold">906K</h4>
+            <h4 className="lg:text-6xl text-5xl font-extrabold">906K</h4>
             <p className="text-sm">46% more than last month</p>
           </div>
           <div className="space-y-7 space">
             <p className="text-sm ">Active Apps</p>
-            <h4 className="text-6xl font-extrabold">132+</h4>
+            <h4 className="lg:text-6xl text-5xl font-extrabold">132+</h4>
             <p className="text-sm">31 more will Launch</p>
           </div>
         </div>
